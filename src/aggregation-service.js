@@ -1,3 +1,5 @@
+import axios from "axios";
+
 export const createAggregationService = (transactionApi) => {
   // In-memory cache
   const userDataCache = new Map();
@@ -14,7 +16,7 @@ export const createAggregationService = (transactionApi) => {
     }
 
     // Respect rate limits (5 requests per minute)
-    const response = await transactionApi.get('/transactions', {
+    const response = await axios.get('http://localhost:4000/transactions', {
       params: {
         startDate: lastUpdated || new Date(0),
         endDate: now
