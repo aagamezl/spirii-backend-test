@@ -5,28 +5,28 @@ export const createUserBalance = (userId) => ({
   spent: 0,
   payout: 0,
   paidOut: 0
-});
+})
 
 export const updateBalance = (userBalance, transaction) => {
-  const updated = { ...userBalance };
+  const updated = { ...userBalance }
 
   switch (transaction.type) {
     case 'earn':
-      updated.earned += transaction.amount;
-      updated.balance += transaction.amount;
-      break;
+      updated.earned += transaction.amount
+      updated.balance += transaction.amount
+      break
     case 'spend':
-      updated.spent += transaction.amount;
-      updated.balance -= transaction.amount;
-      break;
+      updated.spent += transaction.amount
+      updated.balance -= transaction.amount
+      break
     case 'payout_request':
-      updated.payout += transaction.amount;
-      updated.balance -= transaction.amount;
-      break;
+      updated.payout += transaction.amount
+      updated.balance -= transaction.amount
+      break
     case 'payout_completed':
-      updated.paidOut += transaction.amount;
-      break;
+      updated.paidOut += transaction.amount
+      break
   }
 
-  return updated;
-};
+  return updated
+}
